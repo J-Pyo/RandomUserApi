@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    //값 변화를 알기 위해 ObservedObject사용해줌
+    @ObservedObject var randomUserViewModel = RandomUserViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List(randomUserViewModel.randomUsers){ user in
+            RandomUserRowView(user)
         }
-        .padding()
+//        List(0...100, id:\.self){ index in
+//            RandomUserRowView()
+//        }
     }
 }
 
